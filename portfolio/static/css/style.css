@@ -11,7 +11,6 @@ body {
     padding: 20px;
     background: #f5f6fa;
     color: #2c3e50;
-    transition: background 0.3s, color 0.3s;
 }
 
 .container {
@@ -20,31 +19,21 @@ body {
     background: #ffffff;
     padding: 20px 30px;
     border-radius: 6px;
-    transition: background 0.3s;
 }
 
 /* =========================
    TYPOGRAPHY
 ========================= */
-h1 {
-    font-size: 32px;
-    margin: 0;
-}
-
+h1 { font-size: 32px; margin: 0; }
 h2 {
     font-size: 18px;
     border-bottom: 2px solid #3498db;
     display: inline-block;
     margin-bottom: 6px;
 }
+h3 { font-size: 15px; margin: 4px 0; }
 
-h3 {
-    font-size: 15px;
-    margin: 4px 0;
-}
-
-p,
-li {
+p, li {
     font-size: 14px;
     line-height: 1.35;
     margin: 4px 0;
@@ -64,9 +53,7 @@ ul {
     gap: 20px;
 }
 
-.section {
-    margin-top: 14px;
-}
+.section { margin-top: 14px; }
 
 .grid-2 {
     display: grid;
@@ -87,30 +74,8 @@ ul {
 }
 
 /* =========================
-   LINKS & BUTTONS
+   BUTTONS
 ========================= */
-.link {
-    color: #3498db;
-    text-decoration: none;
-}
-
-.copy-btn {
-    margin-left: 6px;
-    font-size: 12px;
-    padding: 2px 6px;
-    cursor: pointer;
-    border: 1px solid #3498db;
-    background: #fff;
-    color: #3498db;
-    border-radius: 4px;
-}
-
-.copy-btn.copied {
-    background: #2ecc71;
-    border-color: #2ecc71;
-    color: #fff;
-}
-
 .print-btn {
     float: right;
     padding: 6px 12px;
@@ -123,99 +88,8 @@ ul {
 }
 
 /* =========================
-   DARK MODE
+   PRINT FIX (IMPORTANT)
 ========================= */
-body.dark {
-    background: #121212;
-    color: #eaeaea;
-}
-
-body.dark .container {
-    background: #1e1e1e;
-}
-
-body.dark h2 {
-    border-color: #1abc9c;
-}
-
-body.dark .badge {
-    background: #2c2c2c;
-    color: #eaeaea;
-}
-
-body.dark .copy-btn {
-    border-color: #1abc9c;
-    color: #1abc9c;
-    background: transparent;
-}
-
-body.dark .copy-btn.copied {
-    background: #1abc9c;
-    color: #000;
-}
-
-body.dark .link {
-    color: #1abc9c;
-}
-
-/* =========================
-   THEME TOGGLE
-========================= */
-.theme-toggle {
-    position: fixed;
-    top: 14px;
-    right: 14px;
-    border: none;
-    background: #3498db;
-    color: #fff;
-    font-size: 16px;
-    padding: 8px 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 999;
-}
-
-/* =========================
-   RESPONSIVE (MOBILE)
-========================= */
-@media (max-width: 768px) {
-
-    body {
-        padding: 10px;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    .top,
-    .grid-2 {
-        grid-template-columns: 1fr;
-    }
-
-    h1 {
-        font-size: 26px;
-    }
-
-    h2 {
-        font-size: 16px;
-    }
-
-    p,
-    li {
-        font-size: 13px;
-    }
-
-    .print-btn {
-        float: none;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-}
-
-/* ======================================
-   FINAL – SINGLE PAGE RESUME PRINT
-====================================== */
 @media print {
 
     @page {
@@ -223,64 +97,59 @@ body.dark .link {
         margin: 6mm;
     }
 
-    html,
-    body {
+    html, body {
         background: #fff !important;
         color: #000 !important;
         font-size: 10.5px !important;
         line-height: 1.2 !important;
-        padding: 0 !important;
         margin: 0 !important;
-    }
-
-    body {
-        overflow: visible !important;
+        padding: 0 !important;
     }
 
     .container {
-        max-width: 100% !important;
         width: 100% !important;
         padding: 0 !important;
         margin: 0 !important;
-        background: #fff !important;
         border-radius: 0 !important;
     }
 
-    h1 {
-        font-size: 22px !important;
-    }
-
-    h2 {
-        font-size: 13px !important;
-        margin-bottom: 3px !important;
-    }
-
-    h3 {
-        font-size: 12px !important;
-    }
-
-    p,
-    li {
-        font-size: 10.5px !important;
-        margin-bottom: 3px !important;
-    }
-
-    .top,
+    /* KEEP GRID */
     .grid-2 {
-        display: block !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
     }
 
-    .section {
-        margin-top: 6px !important;
+    .top {
+        grid-template-columns: 2fr 1fr !important;
     }
 
-    * {
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
+    /* TIGHT SPACING */
+    .section { margin-top: 4px !important; }
+
+    p, li {
+        margin: 2px 0 !important;
+        font-size: 10.5px !important;
     }
 
-    .theme-toggle,
-    .copy-btn,
+    ul {
+        margin: 2px 0 !important;
+        padding-left: 14px !important;
+    }
+
+    h1 { font-size: 22px !important; }
+    h2 { font-size: 13px !important; }
+    h3 { font-size: 12px !important; }
+
+    /* SMART BREAK CONTROL */
+    .section,
+    .grid-2 > div,
+    ul {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* HIDE BUTTONS */
     .print-btn {
         display: none !important;
     }
